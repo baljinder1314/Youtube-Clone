@@ -1,21 +1,24 @@
 import { API_KEY } from "../utils/constent";
 
-const useFetchVideos = async (nextpage, setHasMore) => {
-  let url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=in&maxResults=50&key=${API_KEY}`;
+const fetchVideos = async (pageToken = "") => {
+  let url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=IN&maxResults=50&key=${API_KEY}`;
 
-  if (nextpage) {
-    url += `&nextPageToken=${nextpage}`;
+  if (pageToken) {
+    url += `&pageToken=${pageToken}`;
   }
+
   try {
     const response = await fetch(url);
-    const data = await response.json();
-    if (!data?.nextPageToken) {
-      setHasMore(false);
+
+    if (!response.ok) {
+      throw new Error(`Fetch failed with status ${response.status}`);
     }
+
+    const data = await response.json();
     return data;
   } catch (error) {
-    console.log(`Error while feting videos ${error}`);
+    console.error("Error while fetching videos:", error);
   }
 };
 
-export default useFetchVideos;
+export default fetchVideos;

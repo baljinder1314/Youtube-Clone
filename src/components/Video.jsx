@@ -14,10 +14,9 @@ function Video({ data }) {
     title,
     views,
   } = cleanData;
-  console.log(thumbnail);
   return (
     <div className="w-100 h-100 hover:bg-gray-600/20 transition-all duration-100 ease-linear py-4 px-4 space-y-2">
-      <div className="w-full border-4 h-50 border-green-600 overflow-hidden">
+      <div className="w-full rounded-2xl h-50  overflow-hidden">
         <div
           className=" bg-center  h-70 w-full"
           style={{ backgroundImage: `url(${thumbnail})` }}
