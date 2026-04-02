@@ -1,8 +1,8 @@
-
-function PlayingVideo({ videoId }) {
+function PlayingVideo({ videoId, title }) {
   return (
-    <div className="p-5">
-      <iframe className="w-250 aspect-video"
+    <div className="w-250">
+      <iframe
+        className="w-250 aspect-video"
         src={`https://www.youtube.com/embed/${videoId}`}
         title="YouTube video player"
         frameBorder="0"
@@ -10,6 +10,9 @@ function PlayingVideo({ videoId }) {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
+      <div className="text-2xl font-semibold mt-3">
+        {title || "Now Playing"}
+      </div>
     </div>
   );
 }

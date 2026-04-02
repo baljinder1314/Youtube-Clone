@@ -1,4 +1,4 @@
-import React from "react";
+
 import formatVideoData, { formatViews, timeAgo } from "../utils/helper";
 
 function Video({ data }) {
