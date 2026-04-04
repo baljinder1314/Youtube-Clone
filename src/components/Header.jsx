@@ -70,12 +70,17 @@ const Header = () => {
             className="border px-4 py-2 w-full rounded-l-full focus:outline-none  "
           />
           <button
-            className="border px-4 py-2 rounded-r-full"
-            onClick={() => useSearchVideo(search)}
+            disabled={!search.trim() || loading}
+            className={`border px-4 py-2 rounded-r-full ${!search.trim() || loading ? "opacity-50 cursor-not-allowed" : ""}`}
+            onClick={() => {
+              if (search.trim()) useSearchVideo(search);
+            }}
           >
-            {loading ?
+            {loading ? (
               <div className="w-5 h-5 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-            :"Search"}
+            ) : (
+              "Search"
+            )}
           </button>
           {searchState && (
             <div className="absolute top-10.5 w-full bg-white max-h-100 ">
