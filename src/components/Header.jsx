@@ -3,7 +3,7 @@ import { toggleMenu } from "../slices/toggleSlice";
 import { useEffect, useState } from "react";
 import { addSearch } from "../slices/searchSice";
 import SearchData from "./SearchData";
-import { API_KEY } from "../utils/constent";
+import {} from "../utils/constent";
 import { addVideo } from "../slices/videoSlice";
 
 const Header = () => {
@@ -41,7 +41,7 @@ const Header = () => {
   const useSearchVideo = async (s) => {
     setLoading(true);
     const video = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${s}&type=video&key=${API_KEY}`,
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${s}&type=video&key=${import.meta.env.VITE_YOUTUBE_}`,
     );
     const data = await video.json();
     dispatch(addVideo(data));

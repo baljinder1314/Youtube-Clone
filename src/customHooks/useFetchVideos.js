@@ -1,7 +1,7 @@
-import { API_KEY } from "../utils/constent";
+import {  } from "../utils/constent";
 
 const fetchVideos = async (pageToken = "") => {
-  let url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=IN&maxResults=50&key=${API_KEY}`;
+  let url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=IN&maxResults=50&key=${ import.meta.env.VITE_YOUTUBE_ }`;
 
   if (pageToken) {
     url += `&pageToken=${pageToken}`;
